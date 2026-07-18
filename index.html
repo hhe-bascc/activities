@@ -153,7 +153,24 @@ footer{background:var(--navy);color:#8FA6D6;padding:26px 0;font-family:"IBM Plex
     <p class="lede">Bookmark this. Activity guides, the equipment reservation sheet, and every counselor resource live here. Tiles marked <strong style="color:#FFC43D">Coming soon</strong> aren't built yet — they'll turn on as they're added.</p>
   </div>
 </header>
-
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Heron Heights Elementary · BASCC Program</p>
+    <h1><em>Outdoor</em> activites. Head out!</h1>
+    <p class="lede">Seventy-six outdoor activities built around the equipment we actually own. Filter by what you reserved this week and the guide shows you only what you can run. Every "you need" line uses the exact names from the reservation sheet.</p>
+    <div class="hero-actions">
+      <button class="btn btn-primary" id="pickBtn">Pick one for me</button>
+      <button class="btn btn-ghost" id="noPrepBtn">Show no-equipment only</button>
+      <button class="btn btn-ghost" onclick="window.print()">Print the guide</button>
+    </div>
+    <div class="hero-stats">
+      <div><b>76</b>Activities</div>
+      <div><b>6</b>Categories</div>
+      <div><b>20</b>Equipment sets</div>
+      <div><b>K–5</b>Grade range</div>
+    </div>
+  </div>
+</header>
 <div class="controls">
   <div class="wrap control-row">
     <input class="search" id="search" type="search" placeholder="Search resources…" aria-label="Search resources">
