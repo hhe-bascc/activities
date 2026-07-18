@@ -351,7 +351,7 @@ function bigHTML(x){
       '<div class="icon" style="background:'+col+'"><svg viewBox="0 0 48 48"><use href="#'+x.i+'"/></svg></div>'
     + '<h3>'+x.t+'</h3><p>'+x.d+'</p>'
     + '<div class="go" style="color:'+col+'">'
-      + (live ? (isExternal(x.url) ? 'Open in Google Sheets' : 'Open the guide')
+      + (live ? (isExternal(x.url) ? 'Open in New Tab' : 'Open the guide')
               : 'Coming soon')
       + '<svg viewBox="0 0 48 48"><use href="#'+(isExternal(x.url)?'i-ext':'i-arrow')+'"/></svg></div>';
   return live
