@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)file:///D:/John%20Grayson/Downloads/index_1.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BASCC Counselor Hub — Heron Heights Elementary</title>
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./index_files/css2" rel="stylesheet">
+<style>
+:root{
+  --navy:#0E1F4A; --royal:#1E50D2; --sky:#DCE7FB; --paper:#F6F8FC;
+  --chalk:#FFC43D; --grass:#2E8B4A; --coral:#E4572E; --plum:#7A4FCB;
+  --ink:#14203C; --line:#C9D6EF; --card:#FFFFFF;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+a{color:inherit;text-decoration:none}
+
+/* HERO */
+.hero{background:var(--navy);color:#fff;padding:46px 0 40px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-80px;top:-110px;width:330px;height:330px;border-radius:50%;background:rgba(30,80,210,.45)}
+.hero::before{content:"";position:absolute;right:140px;bottom:-150px;width:230px;height:230px;border-radius:50%;background:rgba(255,196,61,.18)}
+.hero .wrap{position:relative;z-index:2}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--chalk);margin:0 0 14px}
+h1{font-family:"Archivo Black",Impact,sans-serif;font-size:clamp(34px,6.2vw,62px);line-height:.98;letter-spacing:-.02em;margin:0 0 16px;max-width:14ch}
+h1 em{font-style:normal;color:var(--chalk)}
+.lede{font-size:17px;max-width:56ch;color:#D5E0F7;margin:0 0 6px}
+
+/* CONTROLS */
+.controls{position:sticky;top:0;z-index:40;background:rgba(246,248,252,.94);backdrop-filter:blur(10px);border-bottom:1.5px solid var(--line);padding:14px 0}
+.control-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.search{flex:1 1 240px;min-width:190px;border:1.5px solid var(--line);border-radius:999px;padding:10px 16px;font-size:15px;font-family:inherit;background:#fff;color:var(--ink)}
+.search:focus{outline:2px solid var(--royal);outline-offset:1px;border-color:var(--royal)}
+.chip{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;background:#fff;color:var(--navy);border:1.5px solid var(--line);border-radius:999px;padding:9px 15px;cursor:pointer;white-space:nowrap;transition:all .12s ease}
+.chip:hover{border-color:var(--royal);color:var(--royal)}
+.chip[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.control-label{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6C7FA6;margin-right:2px}
+.count{font-family:"IBM Plex Mono",monospace;font-size:12px;color:#6C7FA6;letter-spacing:.06em;margin-left:auto;white-space:nowrap}
+
+main{padding:36px 0 10px}
+
+/* SECTION HEADS */
+.sec{margin-bottom:38px}
+.sec-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+  border-bottom:2.5px solid var(--navy);padding-bottom:8px;margin-bottom:18px}
+.sec-head h2{font-family:"Archivo Black",sans-serif;font-size:22px;letter-spacing:-.01em;margin:0}
+.sec-head p{margin:0;font-size:14px;color:#6C7FA6}
+.sec-head .n{font-family:"IBM Plex Mono",monospace;font-size:12px;color:#8496B8;letter-spacing:.12em;margin-left:auto}
+
+/* PRIMARY TILES */
+.primary{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.big{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:26px;display:flex;flex-direction:column;gap:14px;
+  transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;position:relative;overflow:hidden}
+.big::after{content:"";position:absolute;right:-40px;bottom:-40px;width:130px;height:130px;border-radius:50%;opacity:.10;background:currentColor}
+.big:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(14,31,74,.13)}
+.big .icon{width:60px;height:60px;border-radius:15px;display:grid;place-items:center;color:#fff}
+.big .icon svg{width:36px;height:36px}
+.big h3{font-family:"Archivo Black",sans-serif;font-size:22px;margin:0;line-height:1.1;letter-spacing:-.01em;color:var(--navy)}
+.big p{margin:0;font-size:15px;color:#33415F}
+.big .go{margin-top:auto;font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;display:flex;align-items:center;gap:8px}
+.big .go svg{width:15px;height:15px}
+
+/* TILES */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:14px}
+.tile{background:var(--card);border:1.5px solid var(--line);border-radius:14px;padding:18px;display:flex;gap:14px;align-items:flex-start;
+  transition:transform .13s ease,box-shadow .13s ease,border-color .13s ease}
+.tile.live:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(14,31,74,.10);border-color:#9FB6E4}
+.tile.soon{background:#F2F5FA;border-style:dashed;border-color:#BFCEE8}
+.tile .icon{flex:0 0 42px;width:42px;height:42px;border-radius:11px;display:grid;place-items:center;color:#fff}
+.tile.soon .icon{opacity:.42}
+.tile .icon svg{width:25px;height:25px}
+.tile h4{font-family:"Archivo Black",sans-serif;font-size:15px;margin:1px 0 5px;line-height:1.15;color:var(--navy);letter-spacing:-.005em}
+.tile.soon h4{color:#54648A}
+.tile p{margin:0;font-size:13.5px;color:#5A6B8C;line-height:1.45}
+.badge{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.11em;text-transform:uppercase;border-radius:5px;padding:3px 7px;margin-top:9px}
+.badge.live{background:#D7F2EA;color:#186B58}
+.badge.ext{background:var(--sky);color:#16357E}
+.badge.soon{background:#E4EAF5;color:#6C7FA6}
+
+.empty{text-align:center;padding:54px 20px;color:#6C7FA6;border:2px dashed var(--line);border-radius:16px}
+.empty b{display:block;font-family:"Archivo Black",sans-serif;font-size:19px;color:var(--navy);margin-bottom:6px}
+
+/* MAINTENANCE */
+.maint{background:#fff;border-top:1.5px solid var(--line);margin-top:40px;padding:40px 0 54px}
+.maint h2{font-family:"Archivo Black",sans-serif;font-size:26px;margin:0 0 6px}
+.maint .sub{color:#5A6B8C;margin:0 0 22px;max-width:62ch}
+details{background:var(--paper);border:1.5px solid var(--line);border-radius:14px;padding:0;margin-bottom:12px;overflow:hidden}
+summary{cursor:pointer;padding:16px 20px;font-family:"Archivo Black",sans-serif;font-size:15px;color:var(--navy);list-style:none;display:flex;align-items:center;gap:10px}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"+";font-family:"IBM Plex Mono",monospace;font-size:18px;color:var(--royal);width:16px}
+details[open] summary::before{content:"–"}
+details .inner{padding:0 20px 20px 46px;font-size:14.5px;color:#33415F}
+details .inner ol{margin:0;padding-left:18px}
+details .inner li{margin-bottom:9px}
+code{font-family:"IBM Plex Mono",monospace;font-size:12.5px;background:#E4EAF5;border-radius:4px;padding:2px 6px;color:var(--navy);word-break:break-all}
+pre{background:var(--navy);color:#D5E0F7;border-radius:10px;padding:14px 16px;overflow-x:auto;font-family:"IBM Plex Mono",monospace;font-size:12.5px;line-height:1.6;margin:10px 0}
+pre .k{color:var(--chalk)}
+pre .s{color:#8FD8B4}
+
+footer{background:var(--navy);color:#8FA6D6;padding:26px 0;font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.06em;display:flex;justify-content:center;text-align:center}
+
+@media print{
+  .controls,.hero::after,.hero::before,footer,.maint{display:none!important}
+  body{background:#fff}
+  .hero{background:#fff;color:var(--navy);padding:0 0 16px;border-bottom:3px solid var(--navy)}
+  .hero .lede{color:#333}
+  .eyebrow{color:var(--navy)}
+  .grid{grid-template-columns:repeat(3,1fr)}
+  .tile,.big{break-inside:avoid;box-shadow:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<g id="i-indoor"><path d="M6 22 24 8l18 14" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path><path d="M11 20v18h26V20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"></path><rect x="20" y="27" width="8" height="11" fill="currentColor"></rect></g>
+<g id="i-sun"><circle cx="24" cy="24" r="8" fill="none" stroke="currentColor" stroke-width="2.6"></circle><path d="M24 6v5m0 26v5M6 24h5m26 0h5M11 11l3.5 3.5m19 19L37 37M37 11l-3.5 3.5m-19 19L11 37" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"></path></g>
+<g id="i-sheet"><rect x="8" y="8" width="32" height="32" rx="3" fill="none" stroke="currentColor" stroke-width="2.5"></rect><path d="M8 18h32M8 29h32M20 8v32M30 8v32" stroke="currentColor" stroke-width="2"></path><rect x="8" y="8" width="12" height="10" fill="currentColor"></rect></g>
+<g id="i-book"><path d="M24 14C20 10 13 10 9 11v24c4-1 11-1 15 3 4-4 11-4 15-3V11c-4-1-11-1-15 3Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"></path><path d="M24 14v24" stroke="currentColor" stroke-width="2.4"></path></g>
+<g id="i-badge"><circle cx="24" cy="18" r="8" fill="none" stroke="currentColor" stroke-width="2.5"></circle><path d="M10 42c0-8 6-12 14-12s14 4 14 12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"></path></g>
+<g id="i-star"><path d="M24 7l5.2 10.8L41 19.4l-8.5 8.4 2 11.8L24 34l-10.5 5.6 2-11.8L7 19.4l11.8-1.6L24 7Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"></path></g>
+<g id="i-calendar"><rect x="8" y="12" width="32" height="28" rx="3" fill="none" stroke="currentColor" stroke-width="2.5"></rect><path d="M8 21h32" stroke="currentColor" stroke-width="2.4"></path><path d="M17 7v9m14-9v9" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"></path><rect x="14" y="26" width="6" height="6" rx="1" fill="currentColor"></rect></g>
+<g id="i-shirt"><path d="M18 8l6 4 6-4 10 6-4 8-4-2v18H16V20l-4 2-4-8 10-6Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"></path></g>
+<g id="i-clipboard"><rect x="11" y="9" width="26" height="32" rx="3" fill="none" stroke="currentColor" stroke-width="2.5"></rect><rect x="18" y="5" width="12" height="7" rx="2" fill="currentColor"></rect><path d="M17 24l4 4 10-10" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"></path></g>
+<g id="i-clock"><circle cx="24" cy="24" r="16" fill="none" stroke="currentColor" stroke-width="2.5"></circle><path d="M24 14v10l7 5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></g>
+<g id="i-apple"><path d="M24 16c-3-4-9-5-12-1-4 5-2 15 2 21 2 3 5 4 7 2 2-1.4 4-1.4 6 0 2 2 5 1 7-2 4-6 6-16 2-21-3-4-9-3-12 1Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"></path><path d="M24 16V9m0 0c3-1 5 0 6-2" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"></path></g>
+<g id="i-pencil"><path d="M32 7 41 16 18 39H9v-9L32 7Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"></path><path d="M28 11l9 9" stroke="currentColor" stroke-width="2.4"></path></g>
+<g id="i-list"><path d="M18 13h22M18 24h22M18 35h22" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"></path><circle cx="10" cy="13" r="3" fill="currentColor"></circle><circle cx="10" cy="24" r="3" fill="currentColor"></circle><circle cx="10" cy="35" r="3" fill="currentColor"></circle></g>
+<g id="i-shield"><path d="M24 6l14 5v12c0 9-6 15-14 19-8-4-14-10-14-19V11l14-5Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"></path><path d="M18 24l4 4 9-9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"></path></g>
+<g id="i-swing"><path d="M8 40 24 8l16 32" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"></path><path d="M17 24h14" stroke="currentColor" stroke-width="2.4"></path><rect x="18" y="30" width="12" height="4" rx="1.5" fill="currentColor"></rect></g>
+<g id="i-firstaid"><rect x="8" y="14" width="32" height="24" rx="4" fill="none" stroke="currentColor" stroke-width="2.5"></rect><path d="M18 14v-4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4" fill="none" stroke="currentColor" stroke-width="2.4"></path><path d="M24 21v10m-5-5h10" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path></g>
+<g id="i-lightning"><path d="M26 5 12 27h10l-2 16 16-23H26l2-15Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"></path></g>
+<g id="i-phone"><path d="M17 7l5 9-4 4c2 5 6 9 11 11l4-4 9 5-3 7c-1 2-3 2-5 2C21 40 8 27 6 15c0-2 0-4 2-5l7-3Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"></path></g>
+<g id="i-family"><circle cx="15" cy="15" r="5" fill="none" stroke="currentColor" stroke-width="2.5"></circle><circle cx="33" cy="15" r="5" fill="none" stroke="currentColor" stroke-width="2.5"></circle><path d="M6 38c0-7 4-11 9-11s9 4 9 11M24 38c0-7 4-11 9-11s9 4 9 11" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"></path></g>
+<g id="i-mail"><rect x="7" y="12" width="34" height="24" rx="3" fill="none" stroke="currentColor" stroke-width="2.5"></rect><path d="M8 15l16 12 16-12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"></path></g>
+<g id="i-arrow"><path d="M8 24h30m-9-9 9 9-9 9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path></g>
+<g id="i-ext"><path d="M26 10h12v12" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path><path d="M38 10 22 26" stroke="currentColor" stroke-width="3" stroke-linecap="round"></path><path d="M34 28v9a3 3 0 0 1-3 3H11a3 3 0 0 1-3-3V17a3 3 0 0 1 3-3h9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"></path></g>
+</defs>
+</svg>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Heron Heights Elementary · BASCC Program</p>
+    <h1>Everything BASCC, <em>one page</em>.</h1>
+    <p class="lede">Bookmark this. Activity guides, the equipment reservation sheet, and every counselor resource live here. Tiles marked <strong style="color:#FFC43D">Coming soon</strong> aren't built yet — they'll turn on as they're added.</p>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="wrap control-row">
+    <input class="search" id="search" type="search" placeholder="Search resources…" aria-label="Search resources">
+    <span class="control-label">Show</span>
+    <button class="chip" id="allChip" aria-pressed="true">Everything</button>
+    <button class="chip" id="liveChip" aria-pressed="false">Ready now</button>
+    <span class="count" id="count">3 ready · 18 coming soon</span>
+  </div>
+</div>
+
+<main class="wrap" id="main"><section class="sec"><div class="sec-head"><h2>Start here</h2><p>The three you’ll use most</p><span class="n">3</span></div><div class="primary"><a class="big" style="color:#1E50D2" href="file:///D:/John%20Grayson/Downloads/HHE-BASCC-Indoor-Activity-Guide.html"><div class="icon" style="background:#1E50D2"><svg viewBox="0 0 48 48"><use href="#i-indoor"></use></svg></div><h3>Indoor Activity Guide</h3><p>71 activities for classroom, cafeteria, and media center days. Filter by time, group size, and prep — or hit Pick one for me when the sky opens up.</p><div class="go" style="color:#1E50D2">Open the guide<svg viewBox="0 0 48 48"><use href="#i-arrow"></use></svg></div></a><a class="big" style="color:#2E8B4A" href="file:///D:/John%20Grayson/Downloads/HHE-BASCC-Outdoor-Activity-Guide.html"><div class="icon" style="background:#2E8B4A"><svg viewBox="0 0 48 48"><use href="#i-sun"></use></svg></div><h3>Outdoor Activity Guide</h3><p>76 activities built around our equipment. Filter by what you reserved this week and it shows only what you can actually run.</p><div class="go" style="color:#2E8B4A">Open the guide<svg viewBox="0 0 48 48"><use href="#i-arrow"></use></svg></div></a><a class="big" style="color:#C9973A" href="https://docs.google.com/spreadsheets/d/1HzYiylFHIusn3qGHpTNr36HMS3I8eo12BiL6lt-P6Jo/edit?usp=drive_link" target="_blank" rel="noopener"><div class="icon" style="background:#C9973A"><svg viewBox="0 0 48 48"><use href="#i-sheet"></use></svg></div><h3>Equipment Reservation</h3><p>Book gear for your group before your shift. Initials in the box for your week. Anything not on the sheet may already be spoken for.</p><div class="go" style="color:#C9973A">Open in Google Sheets<svg viewBox="0 0 48 48"><use href="#i-ext"></use></svg></div></a></div></section><section class="sec"><div class="sec-head"><h2>Staff resources</h2><p>Who we are, what's expected, and how to get up to speed</p><span class="n">5</span></div><div class="grid"><div class="tile soon"><div class="icon" style="background:#1E50D2"><svg viewBox="0 0 48 48"><use href="#i-badge"></use></svg></div><div><h4>New Counselor Onboarding Packet</h4><p>Program overview, 7 Habits, safety protocols, first-week checklist, and the two sign-off forms.</p><span class="badge soon">Coming soon</span></div></div><div class="tile soon"><div class="icon" style="background:#0E1F4A"><svg viewBox="0 0 48 48"><use href="#i-book"></use></svg></div><div><h4>BASCC Staff Handbook</h4><p>The district handbook, Rev. 6/2024. The source document for policy questions.</p><span class="badge soon">Coming soon</span></div></div><div class="tile soon"><div class="icon" style="background:#C9973A"><svg viewBox="0 0 48 48"><use href="#i-star"></use></svg></div><div><h4>Leader in Me at BASCC</h4><p>How the 7 Habits map to counselor behaviors and the language we use with kids.</p><span class="badge soon">Coming soon</span></div></div><div class="tile soon"><div class="icon" style="background:#7A4FCB"><svg viewBox="0 0 48 48"><use href="#i-clock"></use></svg></div><div><h4>Staff Schedule &amp; Coverage</h4><p>Who's on which group, plus the call-out and coverage request process.</p><span class="badge soon">Coming soon</span></div></div><div class="tile soon"><div class="icon" style="background:#E4572E"><svg viewBox="0 0 48 48"><use href="#i-shirt"></use></svg></div><div><h4>Professional Expectations</h4><p>Dress code, phone use, punctuality, and interacting with families.</p><span class="badge soon">Coming soon</span></div></div></div></section><section class="sec"><div class="sec-head"><h2>Daily operations</h2><p>The parts of the shift that happen every single day</p><span class="n">5</span></div><div class="grid"><div class="tile soon"><div class="icon" style="background:#1E50D2"><svg viewBox="0 0 48 48"><use href="#i-clipboard"></use></svg></div><div><h4>Sign-In &amp; Sign-Out Procedures</h4><p>Authorized pickup, late pickup, and what to do when a name isn't on the list.</p><span class="badge soon">Coming soon</span></div></div><div class="tile soon"><div class="icon" style="background:#0E1F4A"><svg viewBox="0 0 48 48"><use href="#i-calendar"></use></svg></div><div><h4>Daily Schedule &amp; Room Assignments</h4><p>Block-by-block schedule with room, group, and counselor assignments.</p><span class="badge soon">Coming soon</span></div></div><div class="tile soon"><div class="icon" style="background:#7A4FCB"><svg viewBox="0 0 48 48"><use href="#i-list"></use></svg></div><div><h4>Attendance &amp; Head Count Log</h4><p>The count sheet and the three-count rule for every transition.</p><span class="badge soon">Coming soon</span></div></div><div class="tile soon"><div class="icon" style="background:#2E8B4A"><svg viewBox="0 0 48 48"><use href="#i-apple"></use></svg></div><div><h4>Snack Procedures &amp; Allergy List</h4><p>Distribution, seating, cleanup, and the current allergy roster. Check it every session.</p><span class="badge soon">Coming soon</span></div></div><div class="tile soon"><div class="icon" style="background:#E4572E"><svg viewBox="0 0 48 48"><use href="#i-pencil"></use></svg></div><div><h4>Homework Help Guidelines</h4><p>What we help with, what we don't, and how to run the homework block.</p><span class="badge soon">Coming soon</span></div></div></div></section><section class="sec"><div class="sec-head"><h2>Safety &amp; emergency</h2><p>Know these before you need them, not while you need them</p><span class="n">5</span></div><div class="grid"><div class="tile soon"><div class="icon" style="background:#E4572E"><svg viewBox="0 0 48 48"><use href="#i-shield"></use></svg></div><div><h4>Standard Response Protocol</h4><p>Hold, Secure, Lockdown, Evacuate, Shelter — the actions and what each one means for your group.</p><span class="badge soon">Coming soon</span></div></div><div class="tile soon"><div class="icon" style="background:#2E8B4A"><svg viewBox="0 0 48 48"><use href="#i-swing"></use></svg></div><div><h4>Playground Safety Checklist</h4><p>Pre-use inspection, supervision zones, and equipment age rules.</p><span class="badge soon">Coming soon</span></div></div><div class="tile soon"><div class="icon" style="background:#0E1F4A"><svg viewBox="0 0 48 48"><use href="#i-firstaid"></use></svg></div><div><h4>Incident &amp; Injury Reporting</h4><p>What gets reported, how fast, and who gets the form.</p><span class="badge soon">Coming soon</span></div></div><div class="tile soon"><div class="icon" style="background:#1E50D2"><svg viewBox="0 0 48 48"><use href="#i-lightning"></use></svg></div><div><h4>Severe Weather Procedure</h4><p>Thunder means done. The 30-minute rule and the indoor pivot.</p><span class="badge soon">Coming soon</span></div></div><div class="tile soon"><div class="icon" style="background:#7A4FCB"><svg viewBox="0 0 48 48"><use href="#i-phone"></use></svg></div><div><h4>Emergency Contacts</h4><p>Front office, supervisor, district, and the numbers that go on your radio card.</p><span class="badge soon">Coming soon</span></div></div></div></section><section class="sec"><div class="sec-head"><h2>Families</h2><p>What parents see, and how we talk to them</p><span class="n">3</span></div><div class="grid"><div class="tile soon"><div class="icon" style="background:#7A4FCB"><svg viewBox="0 0 48 48"><use href="#i-family"></use></svg></div><div><h4>Parent Handbook</h4><p>What families were given at registration. Worth knowing what they've already been told.</p><span class="badge soon">Coming soon</span></div></div><div class="tile soon"><div class="icon" style="background:#1E50D2"><svg viewBox="0 0 48 48"><use href="#i-mail"></use></svg></div><div><h4>Parent Communication Templates</h4><p>Starting points for behavior notes, late pickup, injury follow-up, and good news.</p><span class="badge soon">Coming soon</span></div></div><div class="tile soon"><div class="icon" style="background:#2E8B4A"><svg viewBox="0 0 48 48"><use href="#i-calendar"></use></svg></div><div><h4>Program Calendar</h4><p>Early release days, holidays, closures, and teacher planning days.</p><span class="badge soon">Coming soon</span></div></div></div></section></main>
+
+<div class="empty wrap" id="empty" hidden="" style="margin-bottom:40px">
+  <b>Nothing matches that.</b>
+  Clear the search box or switch back to Everything.
+</div>
+
+<section class="maint">
+  <div class="wrap">
+    <h2>Keeping this page current</h2>
+    <p class="sub">This page is a single file. Everything on it is edited in one list near the bottom of the code — you don't have to touch the layout or the styling to add a resource.</p>
+
+    <details>
+      <summary>How to turn on a "Coming soon" tile</summary>
+      <div class="inner">
+        <ol>
+          <li>Open this file in any text editor (Notepad, TextEdit, VS Code).</li>
+          <li>Search for the tile's title — for example <code>Parent Handbook</code>.</li>
+          <li>On that line, replace <code>url:null</code> with the real link in quotes, like <code>url:"https://…"</code>.</li>
+          <li>Save. The tile turns live automatically — the badge, the hover, and the link all follow from whether a URL is present.</li>
+        </ol>
+        <pre><span class="k">// before</span>
+{t:<span class="s">"Parent Handbook"</span>, i:<span class="s">"i-family"</span>, c:<span class="s">"plum"</span>, url:<span class="k">null</span>, d:<span class="s">"…"</span>}
+
+<span class="k">// after</span>
+{t:<span class="s">"Parent Handbook"</span>, i:<span class="s">"i-family"</span>, c:<span class="s">"plum"</span>, url:<span class="s">"https://drive.google.com/…"</span>, d:<span class="s">"…"</span>}</pre>
+      </div>
+    </details>
+
+    <details>
+      <summary>Adding a resource that isn't listed</summary>
+      <div class="inner">
+        <p style="margin:0 0 10px">Copy any existing line, paste it below, and change the four fields. Put it inside whichever section it belongs to.</p>
+        <pre>{t:<span class="s">"Title of the resource"</span>,
+ i:<span class="s">"i-clipboard"</span>,          <span class="k">// icon name — see the list at the top of the file</span>
+ c:<span class="s">"royal"</span>,                <span class="k">// color: navy, royal, grass, coral, plum, chalk</span>
+ url:<span class="s">"https://…"</span>,          <span class="k">// or null if it doesn't exist yet</span>
+ d:<span class="s">"One line about what it's for."</span>}</pre>
+      </div>
+    </details>
+
+    <details>
+      <summary>Where the files need to live</summary>
+      <div class="inner">
+        <p style="margin:0 0 10px">The two activity guides are linked by filename, not by web address. That means this page and both guides have to sit in the <strong>same folder</strong> — the same Drive folder, the same shared drive, or the same web folder if it gets hosted.</p>
+        <p style="margin:0 0 10px">Expected filenames:</p>
+        <ol>
+          <li><code>index.html</code> — this page</li>
+          <li><code>HHE-BASCC-Indoor-Activity-Guide.html</code></li>
+          <li><code>HHE-BASCC-Outdoor-Activity-Guide.html</code></li>
+        </ol>
+        <p style="margin:10px 0 0">If a guide moves somewhere with its own web address, swap the filename for that full address the same way you would for any other tile.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Getting this onto counselors' phones</summary>
+      <div class="inner">
+        <p style="margin:0 0 10px">Once the folder is somewhere counselors can reach, send them the link to this page and have them add it to their home screen:</p>
+        <ol>
+          <li><strong>iPhone</strong> — open the link in Safari, tap Share, then Add to Home Screen.</li>
+          <li><strong>Android</strong> — open in Chrome, tap the three-dot menu, then Add to Home screen.</li>
+        </ol>
+        <p style="margin:10px 0 0">It then opens like an app, which matters when it's 3:15 and it's raining.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Heron Heights Elementary · Before &amp; After School Child Care · Aligned to the 7 Habits · Rev. 7/2026</div>
+</footer>
+
+<script>
+/* ============================================================
+   EDIT BELOW THIS LINE
+   url: "https://…"  or a filename  → tile is live
+   url: null                        → tile shows "Coming soon"
+   colors: navy · royal · grass · coral · plum · chalk
+   ============================================================ */
+
+const COLOR = {navy:'#0E1F4A', royal:'#1E50D2', grass:'#2E8B4A', coral:'#E4572E', plum:'#7A4FCB', chalk:'#C9973A'};
+
+const PRIMARY = [
+  {t:"Indoor Activity Guide", i:"i-indoor", c:"royal",
+   url:"HHE-BASCC-Indoor-Activity-Guide.html",
+   d:"71 activities for classroom, cafeteria, and media center days. Filter by time, group size, and prep — or hit Pick one for me when the sky opens up."},
+  {t:"Outdoor Activity Guide", i:"i-sun", c:"grass",
+   url:"HHE-BASCC-Outdoor-Activity-Guide.html",
+   d:"76 activities built around our equipment. Filter by what you reserved this week and it shows only what you can actually run."},
+  {t:"Equipment Reservation", i:"i-sheet", c:"chalk",
+   url:"https://docs.google.com/spreadsheets/d/1HzYiylFHIusn3qGHpTNr36HMS3I8eo12BiL6lt-P6Jo/edit?usp=drive_link",
+   d:"Book gear for your group before your shift. Initials in the box for your week. Anything not on the sheet may already be spoken for."},
+];
+
+const SECTIONS = [
+  {
+    h:"Staff resources", s:"Who we are, what's expected, and how to get up to speed",
+    items:[
+      {t:"New Counselor Onboarding Packet", i:"i-badge", c:"royal", url:null,
+       d:"Program overview, 7 Habits, safety protocols, first-week checklist, and the two sign-off forms."},
+      {t:"BASCC Staff Handbook", i:"i-book", c:"navy", url:null,
+       d:"The district handbook, Rev. 6/2024. The source document for policy questions."},
+      {t:"Leader in Me at BASCC", i:"i-star", c:"chalk", url:null,
+       d:"How the 7 Habits map to counselor behaviors and the language we use with kids."},
+      {t:"Staff Schedule & Coverage", i:"i-clock", c:"plum", url:null,
+       d:"Who's on which group, plus the call-out and coverage request process."},
+      {t:"Professional Expectations", i:"i-shirt", c:"coral", url:null,
+       d:"Dress code, phone use, punctuality, and interacting with families."},
+    ]
+  },
+  {
+    h:"Daily operations", s:"The parts of the shift that happen every single day",
+    items:[
+      {t:"Sign-In & Sign-Out Procedures", i:"i-clipboard", c:"royal", url:null,
+       d:"Authorized pickup, late pickup, and what to do when a name isn't on the list."},
+      {t:"Daily Schedule & Room Assignments", i:"i-calendar", c:"navy", url:null,
+       d:"Block-by-block schedule with room, group, and counselor assignments."},
+      {t:"Attendance & Head Count Log", i:"i-list", c:"plum", url:null,
+       d:"The count sheet and the three-count rule for every transition."},
+      {t:"Snack Procedures & Allergy List", i:"i-apple", c:"grass", url:null,
+       d:"Distribution, seating, cleanup, and the current allergy roster. Check it every session."},
+      {t:"Homework Help Guidelines", i:"i-pencil", c:"coral", url:null,
+       d:"What we help with, what we don't, and how to run the homework block."},
+    ]
+  },
+  {
+    h:"Safety & emergency", s:"Know these before you need them, not while you need them",
+    items:[
+      {t:"Standard Response Protocol", i:"i-shield", c:"coral", url:null,
+       d:"Hold, Secure, Lockdown, Evacuate, Shelter — the actions and what each one means for your group."},
+      {t:"Playground Safety Checklist", i:"i-swing", c:"grass", url:null,
+       d:"Pre-use inspection, supervision zones, and equipment age rules."},
+      {t:"Incident & Injury Reporting", i:"i-firstaid", c:"navy", url:null,
+       d:"What gets reported, how fast, and who gets the form."},
+      {t:"Severe Weather Procedure", i:"i-lightning", c:"royal", url:null,
+       d:"Thunder means done. The 30-minute rule and the indoor pivot."},
+      {t:"Emergency Contacts", i:"i-phone", c:"plum", url:null,
+       d:"Front office, supervisor, district, and the numbers that go on your radio card."},
+    ]
+  },
+  {
+    h:"Families", s:"What parents see, and how we talk to them",
+    items:[
+      {t:"Parent Handbook", i:"i-family", c:"plum", url:null,
+       d:"What families were given at registration. Worth knowing what they've already been told."},
+      {t:"Parent Communication Templates", i:"i-mail", c:"royal", url:null,
+       d:"Starting points for behavior notes, late pickup, injury follow-up, and good news."},
+      {t:"Program Calendar", i:"i-calendar", c:"grass", url:null,
+       d:"Early release days, holidays, closures, and teacher planning days."},
+    ]
+  },
+];
+
+/* ============================================================
+   EDIT ABOVE THIS LINE
+   ============================================================ */
+
+const main = document.getElementById('main');
+const emptyEl = document.getElementById('empty');
+const countEl = document.getElementById('count');
+const searchEl = document.getElementById('search');
+const allChip = document.getElementById('allChip');
+const liveChip = document.getElementById('liveChip');
+let liveOnly = false;
+
+const isExternal = u => !!u && /^https?:/i.test(u);
+
+function bigHTML(x){
+  const col = COLOR[x.c];
+  const live = !!x.url;
+  const inner =
+      '<div class="icon" style="background:'+col+'"><svg viewBox="0 0 48 48"><use href="#'+x.i+'"/></svg></div>'
+    + '<h3>'+x.t+'</h3><p>'+x.d+'</p>'
+    + '<div class="go" style="color:'+col+'">'
+      + (live ? (isExternal(x.url) ? 'Open in Google Sheets' : 'Open the guide')
+              : 'Coming soon')
+      + '<svg viewBox="0 0 48 48"><use href="#'+(isExternal(x.url)?'i-ext':'i-arrow')+'"/></svg></div>';
+  return live
+    ? '<a class="big" style="color:'+col+'" href="'+x.url+'"'+(isExternal(x.url)?' target="_blank" rel="noopener"':'')+'>'+inner+'</a>'
+    : '<div class="big soon" style="color:'+col+'">'+inner+'</div>';
+}
+
+function tileHTML(x){
+  const col = COLOR[x.c];
+  const live = !!x.url;
+  const badge = live
+    ? (isExternal(x.url) ? '<span class="badge ext">Opens in a new tab</span>'
+                         : '<span class="badge live">Ready now</span>')
+    : '<span class="badge soon">Coming soon</span>';
+  const inner =
+      '<div class="icon" style="background:'+col+'"><svg viewBox="0 0 48 48"><use href="#'+x.i+'"/></svg></div>'
+    + '<div><h4>'+x.t+'</h4><p>'+x.d+'</p>'+badge+'</div>';
+  return live
+    ? '<a class="tile live" href="'+x.url+'"'+(isExternal(x.url)?' target="_blank" rel="noopener"':'')+'>'+inner+'</a>'
+    : '<div class="tile soon">'+inner+'</div>';
+}
+
+function matches(x, q){
+  if(liveOnly && !x.url) return false;
+  if(!q) return true;
+  return (x.t+' '+x.d).toLowerCase().includes(q);
+}
+
+function render(){
+  const q = searchEl.value.trim().toLowerCase();
+  let shown = 0, html = '';
+
+  const prim = PRIMARY.filter(x=>matches(x,q));
+  if(prim.length){
+    shown += prim.length;
+    html += '<section class="sec"><div class="sec-head"><h2>Start here</h2>'
+         +  '<p>The three you\u2019ll use most</p>'
+         +  '<span class="n">'+prim.length+'</span></div>'
+         +  '<div class="primary">'+prim.map(bigHTML).join('')+'</div></section>';
+  }
+
+  SECTIONS.forEach(sec=>{
+    const items = sec.items.filter(x=>matches(x,q));
+    if(!items.length) return;
+    shown += items.length;
+    html += '<section class="sec"><div class="sec-head"><h2>'+sec.h+'</h2>'
+         +  '<p>'+sec.s+'</p><span class="n">'+items.length+'</span></div>'
+         +  '<div class="grid">'+items.map(tileHTML).join('')+'</div></section>';
+  });
+
+  main.innerHTML = html;
+  emptyEl.hidden = shown > 0;
+  const total = PRIMARY.length + SECTIONS.reduce((n,s)=>n+s.items.length,0);
+  const ready = [...PRIMARY, ...SECTIONS.flatMap(s=>s.items)].filter(x=>x.url).length;
+  countEl.textContent = liveOnly || q
+    ? shown + ' of ' + total + ' shown'
+    : ready + ' ready · ' + (total-ready) + ' coming soon';
+}
+
+allChip.addEventListener('click',()=>{
+  liveOnly = false;
+  allChip.setAttribute('aria-pressed','true');
+  liveChip.setAttribute('aria-pressed','false');
+  render();
+});
+liveChip.addEventListener('click',()=>{
+  liveOnly = true;
+  liveChip.setAttribute('aria-pressed','true');
+  allChip.setAttribute('aria-pressed','false');
+  render();
+});
+searchEl.addEventListener('input',render);
+render();
+</script>
+
+
+</body></html>
