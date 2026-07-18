@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Outdoor Activity Guide — Heron Heights BASCC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0E1F4A;
+  --royal:#1E50D2;
+  --sky:#DCE7FB;
+  --paper:#F6F8FC;
+  --chalk:#FFC43D;
+  --grass:#2E8B4A;
+  --coral:#E4572E;
+  --ink:#14203C;
+  --line:#C9D6EF;
+  --card:#FFFFFF;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+
+.hero{background:var(--navy);color:#fff;padding:44px 0 38px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-70px;top:-120px;width:320px;height:320px;border-radius:50%;background:rgba(46,139,74,.42)}
+.hero::before{content:"";position:absolute;right:150px;bottom:-150px;width:230px;height:230px;border-radius:50%;background:rgba(255,196,61,.20)}
+.hero .wrap{position:relative;z-index:2}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--chalk);margin:0 0 14px}
+h1{font-family:"Archivo Black",Impact,sans-serif;font-size:clamp(34px,6.2vw,62px);line-height:.98;letter-spacing:-.02em;margin:0 0 16px;max-width:15ch}
+h1 em{font-style:normal;color:var(--chalk)}
+.lede{font-size:17px;max-width:58ch;color:#D5E0F7;margin:0 0 26px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;border:0;border-radius:999px;padding:13px 22px;cursor:pointer;transition:transform .12s ease,box-shadow .12s ease}
+.btn:active{transform:translateY(1px)}
+.btn-primary{background:var(--chalk);color:var(--navy);box-shadow:0 4px 0 #C9973A}
+.btn-primary:hover{box-shadow:0 6px 0 #C9973A;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.45)}
+.btn-ghost:hover{border-color:#fff}
+.hero-stats{display:flex;gap:26px;flex-wrap:wrap;margin-top:30px;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#9FB6E4}
+.hero-stats b{display:block;font-family:"Archivo Black",sans-serif;font-size:26px;color:#fff;letter-spacing:0}
+
+.controls{position:sticky;top:0;z-index:40;background:rgba(246,248,252,.94);backdrop-filter:blur(10px);border-bottom:1.5px solid var(--line);padding:12px 0}
+.control-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.control-row+.control-row{margin-top:9px;padding-top:9px;border-top:1px dashed var(--line)}
+.search{flex:1 1 210px;min-width:180px;border:1.5px solid var(--line);border-radius:999px;padding:10px 16px;font-size:15px;font-family:inherit;background:#fff;color:var(--ink)}
+.search:focus{outline:2px solid var(--royal);outline-offset:1px;border-color:var(--royal)}
+.chip{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;background:#fff;color:var(--navy);border:1.5px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer;white-space:nowrap;transition:all .12s ease}
+.chip:hover{border-color:var(--royal);color:var(--royal)}
+.chip[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+.chip.eq{font-size:11px;padding:6px 12px;text-transform:none;letter-spacing:.02em}
+.chip.eq[aria-pressed="true"]{background:var(--grass);border-color:var(--grass)}
+.chip .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px;vertical-align:1px}
+.control-label{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#6C7FA6;margin-right:2px}
+.count{font-family:"IBM Plex Mono",monospace;font-size:12px;color:#6C7FA6;letter-spacing:.06em;margin-left:auto;white-space:nowrap}
+
+main{padding:34px 0 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.card{background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:12px;transition:box-shadow .15s ease,transform .15s ease,border-color .15s ease;break-inside:avoid}
+.card:hover{box-shadow:0 8px 24px rgba(14,31,74,.10);border-color:#9FB6E4}
+.card.flash{border-color:var(--chalk);box-shadow:0 0 0 4px rgba(255,196,61,.35);animation:pop .5s ease}
+@keyframes pop{0%{transform:scale(.97)}60%{transform:scale(1.015)}100%{transform:scale(1)}}
+.card-top{display:flex;gap:14px;align-items:flex-start}
+.icon{flex:0 0 54px;width:54px;height:54px;border-radius:13px;display:grid;place-items:center;color:#fff}
+.icon svg{width:32px;height:32px}
+.card h3{font-family:"Archivo Black",sans-serif;font-size:19px;line-height:1.12;margin:2px 0 6px;letter-spacing:-.01em}
+.cat{font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase}
+.meta{display:flex;gap:6px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.04em}
+.meta span{background:var(--sky);color:var(--navy);border-radius:6px;padding:4px 8px}
+.meta span.prep-none{background:#D7F2EA;color:#186B58}
+.desc{margin:0;font-size:14.5px;color:#33415F}
+.mats{font-size:13px;color:#5A6B8C;border-top:1.5px dashed var(--line);padding-top:11px;margin:auto 0 0}
+.mats b{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:#8496B8;display:block;margin-bottom:3px;font-weight:600}
+.habit{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--navy);background:#FFF3D6;border-radius:6px;padding:5px 9px;margin-top:10px;align-self:flex-start;font-weight:600}
+.habit svg{width:13px;height:13px;flex:0 0 13px}
+.empty{text-align:center;padding:60px 20px;color:#6C7FA6;border:2px dashed var(--line);border-radius:16px}
+.empty b{display:block;font-family:"Archivo Black",sans-serif;font-size:20px;color:var(--navy);margin-bottom:6px}
+
+.ref{background:#fff;border-top:1.5px solid var(--line);margin-top:44px;padding:48px 0 60px}
+.ref h2{font-family:"Archivo Black",sans-serif;font-size:clamp(24px,4vw,36px);letter-spacing:-.02em;margin:0 0 6px}
+.ref .sub{color:#5A6B8C;margin:0 0 30px;max-width:62ch}
+.ref-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.panel{background:var(--paper);border:1.5px solid var(--line);border-radius:16px;padding:22px;break-inside:avoid}
+.panel h3{font-family:"Archivo Black",sans-serif;font-size:16px;margin:0 0 4px;display:flex;align-items:center;gap:9px}
+.panel h3 .pill{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;color:#fff;flex:0 0 26px}
+.panel h3 .pill svg{width:15px;height:15px}
+.panel p.hint{font-size:13px;color:#6C7FA6;margin:0 0 14px}
+.panel ul{margin:0;padding-left:0;list-style:none}
+.panel li{font-size:14px;padding:8px 0 8px 22px;position:relative;border-bottom:1px dashed var(--line)}
+.panel li:last-child{border-bottom:0}
+.panel li::before{content:"";position:absolute;left:2px;top:15px;width:8px;height:8px;border-radius:2px;background:var(--grass);transform:rotate(45deg)}
+.panel li b{color:var(--navy)}
+.callout{background:var(--navy);color:#fff;border-radius:16px;padding:24px 26px;margin-top:26px}
+.callout h3{font-family:"Archivo Black",sans-serif;font-size:18px;margin:0 0 10px;color:var(--chalk)}
+.callout ol{margin:0;padding-left:20px;font-size:14.5px;color:#D5E0F7}
+.callout li{margin-bottom:7px}
+.callout li:last-child{margin-bottom:0}
+
+footer{background:var(--navy);color:#8FA6D6;padding:26px 0;font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.06em;display:flex;justify-content:center;text-align:center}
+
+@media print{
+  body{background:#fff;font-size:11pt}
+  .controls,.hero-actions,.hero::after,.hero::before,footer{display:none!important}
+  .hero{background:#fff;color:var(--navy);padding:0 0 18px;border-bottom:3px solid var(--navy)}
+  .hero .lede,.hero-stats{color:#333}
+  .eyebrow{color:var(--navy)}
+  .grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .card{box-shadow:none;border:1px solid #aaa;padding:12px}
+  .ref{padding-top:20px}
+  .card,.panel,.callout{page-break-inside:avoid}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+<g id="i-sun"><circle cx="24" cy="24" r="8" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M24 6v5m0 26v5M6 24h5m26 0h5M11 11l3.5 3.5m19 19L37 37M37 11l-3.5 3.5m-19 19L11 37" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></g>
+<g id="i-ball"><circle cx="24" cy="24" r="15" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M24 15l7 5-2.5 8h-9L17 20l7-5Z" fill="currentColor"/><path d="M24 9v6m-15 9 8-4m22 4-8-4M14 39l5.5-11m14.5 11-5.5-11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></g>
+<g id="i-basketball"><circle cx="24" cy="24" r="15" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M24 9v30M9 24h30" stroke="currentColor" stroke-width="2.2"/><path d="M13 13c8 5 8 17 0 22M35 13c-8 5-8 17 0 22" fill="none" stroke="currentColor" stroke-width="2.2"/></g>
+<g id="i-hoopnet"><path d="M12 10h24" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><rect x="16" y="16" width="16" height="5" rx="1.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M18 21l3 10h6l3-10M21 26h6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><circle cx="24" cy="38" r="4" fill="currentColor"/></g>
+<g id="i-gaga"><path d="M17 8h14l9 9v14l-9 9H17l-9-9V17l9-9Z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><circle cx="24" cy="24" r="5.5" fill="currentColor"/></g>
+<g id="i-flag"><path d="M13 41V8" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><path d="M13 10h22l-5 7 5 7H13V10Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></g>
+<g id="i-run"><circle cx="30" cy="10" r="4" fill="currentColor"/><path d="M14 40l7-9 5-6-3-8-7 4-3 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M23 17l8 3 2 8 5 5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g id="i-whistle"><path d="M28 16a10 10 0 1 0 0 16h9a3 3 0 0 0 3-3v-10a3 3 0 0 0-3-3h-9Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><circle cx="21" cy="24" r="3.5" fill="currentColor"/><path d="M28 16l-6-6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></g>
+<g id="i-cone"><path d="M24 8 34 34H14L24 8Z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="M17 25h14" stroke="currentColor" stroke-width="2.4"/><path d="M9 39h30" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/></g>
+<g id="i-pin"><path d="M24 7c4 4 4 9 2 12 3 3 4 7 4 11 0 5-2.6 9-6 9s-6-4-6-9c0-4 1-8 4-11-2-3-2-8 2-12Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><circle cx="24" cy="16" r="2.4" fill="currentColor"/></g>
+<g id="i-cornhole"><path d="M9 37 33 11l6 6-24 20H9v0Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><circle cx="27" cy="20" r="4" fill="currentColor"/></g>
+<g id="i-ringtoss"><path d="M24 8v24" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><ellipse cx="24" cy="32" rx="11" ry="4.5" fill="none" stroke="currentColor" stroke-width="2.5"/><ellipse cx="24" cy="24" rx="8" ry="3.5" fill="none" stroke="currentColor" stroke-width="2.3"/><path d="M11 39h26" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></g>
+<g id="i-hoop"><ellipse cx="24" cy="24" rx="15" ry="15" fill="none" stroke="currentColor" stroke-width="3.4"/><ellipse cx="24" cy="24" rx="10" ry="10" fill="none" stroke="currentColor" stroke-width="1.6" stroke-dasharray="4 5"/></g>
+<g id="i-spoon"><ellipse cx="24" cy="14" rx="7" ry="9" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M24 23v17" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><circle cx="24" cy="13" r="3" fill="currentColor"/></g>
+<g id="i-scooter"><rect x="9" y="18" width="30" height="10" rx="3" fill="none" stroke="currentColor" stroke-width="2.5"/><circle cx="15" cy="34" r="4.5" fill="none" stroke="currentColor" stroke-width="2.4"/><circle cx="33" cy="34" r="4.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M15 28v2m18-2v2" stroke="currentColor" stroke-width="2.2"/></g>
+<g id="i-cups"><path d="M8 39h32" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M11 27h10l-1.5 12h-7L11 27ZM27 27h10l-1.5 12h-7L27 27ZM19 13h10l-1.5 12h-7L19 13Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/></g>
+<g id="i-jumbo"><path d="M6 40h36" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><path d="M8 22h14l-2 18H10L8 22ZM26 22h14l-2 18H28l-2-18ZM17 6h14l-2 14H19L17 6Z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/></g>
+<g id="i-paddle"><ellipse cx="21" cy="19" rx="12" ry="13" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M28 29l10 11" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><circle cx="38" cy="14" r="4" fill="currentColor"/></g>
+<g id="i-racket"><ellipse cx="20" cy="18" rx="11" ry="13" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M13 12h14M13 18h14M13 24h14M16 8v22M24 8v22" stroke="currentColor" stroke-width="1.4"/><path d="M26 29l11 11" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></g>
+<g id="i-basket"><path d="M14 8c-4 8-4 20 2 28l14-6c-4-8-4-16-2-22l-14 0Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M30 30l8 8" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/><circle cx="20" cy="22" r="3.4" fill="currentColor"/></g>
+<g id="i-target"><circle cx="24" cy="24" r="15" fill="none" stroke="currentColor" stroke-width="2.6"/><circle cx="24" cy="24" r="9" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="24" cy="24" r="3.4" fill="currentColor"/></g>
+<g id="i-water"><path d="M24 6c7 9 11 14 11 20a11 11 0 0 1-22 0c0-6 4-11 11-20Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M18 27a6 6 0 0 0 6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></g>
+<g id="i-cloud"><path d="M15 34a8 8 0 0 1 .6-16 11 11 0 0 1 20.4 4A7 7 0 0 1 34 34H15Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></g>
+<g id="i-tree"><path d="M24 6 12 24h6L8 38h32L30 24h6L24 6Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M24 38v5" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"/></g>
+<g id="i-stopwatch"><circle cx="24" cy="27" r="13" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M24 20v7l5 4" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 7h10M24 7v7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></g>
+<g id="i-chain"><circle cx="13" cy="24" r="6" fill="none" stroke="currentColor" stroke-width="2.6"/><circle cx="24" cy="24" r="6" fill="none" stroke="currentColor" stroke-width="2.6"/><circle cx="35" cy="24" r="6" fill="none" stroke="currentColor" stroke-width="2.6"/></g>
+<g id="i-shark"><path d="M6 34c10 0 16-4 20-10 3 5 8 8 16 8-4 5-11 8-20 8-8 0-13-3-16-6Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M26 24 24 6l12 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></g>
+<g id="i-lightning"><path d="M26 5 12 27h10l-2 16 16-23H26l2-15Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></g>
+<g id="i-clipboard"><rect x="11" y="9" width="26" height="32" rx="3" fill="none" stroke="currentColor" stroke-width="2.5"/><rect x="18" y="5" width="12" height="7" rx="2" fill="currentColor"/><path d="M17 24l4 4 10-10" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g id="i-footprint"><path d="M15 30c-4-4-5-10-3-15 1-4 6-5 8-1 2 4 1 12-1 16-1 2-3 2-4 0Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/><ellipse cx="16" cy="38" rx="5" ry="4" fill="currentColor"/><circle cx="31" cy="18" r="3" fill="currentColor"/><circle cx="36" cy="24" r="2.6" fill="currentColor"/><circle cx="33" cy="31" r="2.6" fill="currentColor"/></g>
+<g id="i-eye"><path d="M6 24s7-10 18-10 18 10 18 10-7 10-18 10S6 24 6 24Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><circle cx="24" cy="24" r="5" fill="currentColor"/></g>
+<g id="i-heart"><path d="M24 38S8 28 8 18a8 8 0 0 1 16-3 8 8 0 0 1 16 3c0 10-16 20-16 20Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></g>
+<g id="i-star"><path d="M24 7l5.2 10.8L41 19.4l-8.5 8.4 2 11.8L24 34l-10.5 5.6 2-11.8L7 19.4l11.8-1.6L24 7Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/></g>
+<g id="i-arrows"><path d="M6 18h24l-6-6m6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M42 32H18l6-6m-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g id="i-megaphone"><path d="M10 20v8a3 3 0 0 0 3 3h4l16 8V9L17 17h-4a3 3 0 0 0-3 3Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M38 18a7 7 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></g>
+<g id="i-shield"><path d="M24 6l14 5v12c0 9-6 15-14 19-8-4-14-10-14-19V11l14-5Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M18 24l4 4 9-9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g id="i-bin"><path d="M9 14h30l-3 25H12L9 14Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M17 14V9h14v5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M18 21v11m6-11v11m6-11v11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></g>
+<g id="i-ear"><path d="M16 20a8 8 0 0 1 16 0c0 5-5 6-6 10a4 4 0 0 1-8 0" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M8 16a17 17 0 0 1 6-8M40 16a17 17 0 0 0-6-8" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></g>
+<g id="i-stretch"><circle cx="24" cy="11" r="4" fill="currentColor"/><path d="M24 16v13m0 0-7 11m7-11 7 11M12 22h24" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></g>
+<g id="i-blind"><path d="M8 24s6-9 16-9 16 9 16 9-6 9-16 9-16-9-16-9Z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M10 14 38 34" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></g>
+</defs>
+</svg>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Heron Heights Elementary · BASCC Program</p>
+    <h1>Gear's already <em>booked</em>. Now go use it.</h1>
+    <p class="lede">Seventy-six outdoor activities built around the equipment we actually own. Filter by what you reserved this week and the guide shows you only what you can run. Every "you need" line uses the exact names from the reservation sheet.</p>
+    <div class="hero-actions">
+      <button class="btn btn-primary" id="pickBtn">Pick one for me</button>
+      <button class="btn btn-ghost" id="noPrepBtn">Show no-equipment only</button>
+      <button class="btn btn-ghost" onclick="window.print()">Print the guide</button>
+    </div>
+    <div class="hero-stats">
+      <div><b>76</b>Activities</div>
+      <div><b>6</b>Categories</div>
+      <div><b>20</b>Equipment sets</div>
+      <div><b>K–5</b>Grade range</div>
+    </div>
+  </div>
+</header>
+
+<div class="controls">
+  <div class="wrap">
+    <div class="control-row">
+      <input class="search" id="search" type="search" placeholder="Search activities, equipment, skills…" aria-label="Search activities">
+      <span class="control-label">Type</span>
+      <div id="catChips" style="display:flex;gap:8px;flex-wrap:wrap"></div>
+      <span class="count" id="count"></span>
+    </div>
+    <div class="control-row">
+      <span class="control-label">Equipment</span>
+      <div id="eqChips" style="display:flex;gap:7px;flex-wrap:wrap"></div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <div class="grid" id="grid"></div>
+  <div class="empty" id="empty" hidden>
+    <b>Nothing matches that combination.</b>
+    Tap the active equipment filter to clear it, or clear the search box to see all 76 again.
+  </div>
+</main>
+
+<section class="ref">
+  <div class="wrap">
+    <h2>Run the field</h2>
+    <p class="sub">Outside, the risks change. Heat, sightlines, storms, and equipment that walks off. These four panels are the part of the job that isn't the game.</p>
+    <div class="ref-grid">
+
+      <div class="panel">
+        <h3><span class="pill" style="background:var(--coral)"><svg><use href="#i-sun"/></svg></span>Heat, water, and shade</h3>
+        <p class="hint">August through October in Broward, the heat index is the real supervisor. Plan around it before you plan the game.</p>
+        <ul>
+          <li><b>Water break every 20 minutes</b>, called by you — not when kids ask. Thirst shows up late.</li>
+          <li><b>Heat index above 103°</b> — shade or indoor only, no sustained running games.</li>
+          <li><b>Rotate through shade</b>, don't camp in the sun. Split the group and swap halfway.</li>
+          <li><b>Watch for the quiet one.</b> A kid who stops complaining and sits down is the one to check on.</li>
+          <li><b>Headache, nausea, clammy skin, no sweat</b> — get them inside and get the front office now.</li>
+          <li><b>You drink too.</b> A dehydrated counselor makes bad calls at the worst moment.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3><span class="pill" style="background:var(--navy)"><svg><use href="#i-eye"/></svg></span>Boundaries and head counts</h3>
+        <p class="hint">Say the boundaries out loud and point to them every time, even with the same group you had yesterday.</p>
+        <ul>
+          <li><b>Count at the door, at the field, and before you come back in.</b> Three counts, every time.</li>
+          <li><b>Stand on the edge, not the middle.</b> Position yourself so the whole group is in one field of view.</li>
+          <li><b>Two counselors, opposite corners.</b> Never both on the same side of the play area.</li>
+          <li><b>Name the boundary with an object</b> — the fence, the third cone, the sidewalk crack. Not "over there."</li>
+          <li><b>Bathroom runs go in pairs</b> and you note the time they left.</li>
+          <li><b>Scan the perimeter</b> every few minutes — gates, parking lot side, anyone approaching the fence.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3><span class="pill" style="background:var(--grass)"><svg><use href="#i-bin"/></svg></span>Equipment check-out</h3>
+        <p class="hint">Reserve it on the sheet before your shift. Anything not on the sheet may already be spoken for by another group.</p>
+        <ul>
+          <li><b>Reserve ahead</b> on the equipment reservation workbook — initials in the box for your week.</li>
+          <li><b>Count out, count in.</b> Say the number out loud to a second counselor at both ends.</li>
+          <li><b>Assign a gear captain</b> from the group. Kids return equipment far better than they receive requests to.</li>
+          <li><b>Balls get checked for pressure</b> and hoops for cracks before they go out, not after.</li>
+          <li><b>Report damage the same day</b> — a split gaga ball or a bent cornhole leg comes back to the supervisor, not the shed.</li>
+          <li><b>Nothing goes home.</b> Speed Stacks cups and Velcro balls are the ones that vanish.</li>
+        </ul>
+      </div>
+
+      <div class="panel">
+        <h3><span class="pill" style="background:var(--royal)"><svg><use href="#i-lightning"/></svg></span>Weather calls</h3>
+        <p class="hint">South Florida afternoon storms build fast. The call is yours to make early, not the sky's to make for you.</p>
+        <ul>
+          <li><b>Thunder means done.</b> Any thunder, any distance — everyone inside immediately.</li>
+          <li><b>30 minutes clear</b> after the last thunder before you go back out. Restart the clock each time.</li>
+          <li><b>Watch the western sky</b> around 3 p.m. Dark base plus rising wind means pack up now.</li>
+          <li><b>Have the indoor plan ready</b> before you walk out — pick a backup from the indoor guide first.</li>
+          <li><b>Wet grass after rain</b> — no running games. Switch to Target &amp; Toss on the pavement.</li>
+          <li><b>Fire ant mounds</b> get flagged with a cone and reported. Walk the field before the group does.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="callout">
+      <h3>The two-minute walk-out</h3>
+      <ol>
+        <li>Head count and boundaries before anyone touches a ball. Point at the actual boundary.</li>
+        <li>Sweep the play area — glass, ant mounds, sprinkler heads, anything left from the school day.</li>
+        <li>State the game, the boundary, and the water-break signal in one breath. Then start.</li>
+        <li>Last five minutes are for equipment round-up and the final count, not one more round. Budget it.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Heron Heights Elementary · Before &amp; After School Child Care · Aligned to the 7 Habits · Rev. 7/2026</div>
+</footer>
+
+<script>
+const CATS = {
+  field: {label:"Field Games",   color:"#2E8B4A", blurb:"Big running games on open grass"},
+  court: {label:"Court Games",   color:"#1E50D2", blurb:"Blacktop, gaga pit, and hard surface"},
+  target:{label:"Target & Toss", color:"#E4572E", blurb:"Aim, score, and low-running"},
+  relay: {label:"Relays & Races",color:"#7A4FCB", blurb:"Timed, competitive, gear-driven"},
+  team:  {label:"Team Challenges",color:"#0E1F4A", blurb:"Cooperative problems to solve"},
+  cool:  {label:"Cool Down",     color:"#C9973A", blurb:"Shade, water, and the walk back in"}
+};
+
+const EQUIP = ["No equipment","Balls","Basketballs","Basketball Courts","Gaga Pit","Gaga Balls","Kickball","Bowling","Cornhole","Ring Toss","Jai Alai (Baskets)","Tennis & Velcro Ball","Ping Pong","Pickle Pong","Hula Hoops","Speed Stacks","Jumbo Speed Stacks","Spoons","Giant Spoons","Scooter Boards","Obstacle Course","Cones"];
+
+const A = [
+// ---------- FIELD GAMES ----------
+{c:"field",i:"i-ball",n:"Everybody Kicks Kickball",t:"25–30 min",g:"12–30",p:"5 min prep",
+ d:"Standard kickball with one change: the inning ends when every player has kicked, not after three outs. Nobody sits through a whole inning because the fast kids went first.",
+ m:"Kickball #1, #2, or #3, cones",h:"Think Win-Win",e:"Kickball,Cones"},
+{c:"field",i:"i-ball",n:"Crazy Kickball",t:"25 min",g:"14–30",p:"5 min prep",
+ d:"Any number of runners on a base, no forced outs, and the fielding team must all touch the ball before a tag. Scoring stays high and the arguing drops to almost nothing.",
+ m:"Kickball #1, #2, or #3, cones",h:"Synergize",e:"Kickball,Cones"},
+{c:"field",i:"i-ball",n:"Pinball Kickball",t:"25 min",g:"14–30",p:"5 min prep",
+ d:"No bases. The kicker runs a lap around a cone circle while the fielders pass the ball through every player. Each lap is a point. Fewer rules to explain, more running than regular kickball.",
+ m:"Kickball, cones",h:"Put First Things First",e:"Kickball,Cones"},
+{c:"field",i:"i-flag",n:"Capture the Flag",t:"25–30 min",g:"16–40",p:"5 min prep",
+ d:"Two territories, two flags, hula hoops as the jails. Jailed players are freed by a teammate's tag. Set the jail close to the flag or the game turns into a stalemate.",
+ m:"2 cones or objects as flags, Hula Hoops for jails",h:"Synergize",e:"Hula Hoops,Cones"},
+{c:"field",i:"i-shark",n:"Sharks and Minnows",t:"15 min",g:"12–30",p:"No prep",
+ d:"Minnows cross the field, the shark tags. Tagged players become sharks. Fastest game to explain in the entire guide — 20 seconds and you're playing.",
+ m:"Nothing",h:"Be Proactive",e:"No equipment"},
+{c:"field",i:"i-run",n:"Blob Tag",t:"12 min",g:"10–30",p:"No prep",
+ d:"Tagged players link arms with the tagger, and the blob grows. When it hits six, it splits into two blobs. Only the players on the ends of a blob may tag — that rule is what forces them to coordinate.",
+ m:"Nothing",h:"Synergize",e:"No equipment"},
+{c:"field",i:"i-ball",n:"Steal the Bacon",t:"15–20 min",g:"12–24",p:"5 min prep",
+ d:"Two lines face off, numbered. Call a number and both players sprint for the ball in the middle. Call two numbers at once when the energy dips.",
+ m:"1 ball, 2 cones",h:"Be Proactive",e:"Balls,Cones"},
+{c:"field",i:"i-ball",n:"Line Soccer",t:"20 min",g:"12–30",p:"5 min prep",
+ d:"Two lines, numbers called, only the called players play. Everyone else stays on their line and acts as the goal wall. Great for a group where a few kids dominate every open game.",
+ m:"1 ball, 4 cones",h:"Think Win-Win",e:"Balls,Cones"},
+{c:"field",i:"i-run",n:"Red Light, Green Light",t:"10 min",g:"Any size",p:"No prep",
+ d:"Classic freeze race to the caller. Add yellow light for slow motion and purple light for backwards. Hand the caller job to a different kid every round.",
+ m:"Nothing",h:"Put First Things First",e:"No equipment"},
+{c:"field",i:"i-run",n:"Octopus Tag",t:"15 min",g:"12–30",p:"No prep",
+ d:"Tagged players become seaweed — feet planted, arms free. The field fills up until the last runner is nearly boxed in. It self-balances, so nobody is out for long.",
+ m:"Nothing",h:"Be Proactive",e:"No equipment"},
+{c:"field",i:"i-run",n:"Dragon Tail Tag",t:"12 min",g:"10–24",p:"No prep",
+ d:"Teams line up holding shoulders. The head tries to tag the tail of another dragon. Chaos, but the line must stay connected — break it and your dragon resets.",
+ m:"Nothing (pinnies help)",h:"Synergize",e:"No equipment"},
+{c:"field",i:"i-cone",n:"Cone Flip Frenzy",t:"10 min",g:"10–24",p:"5 min prep",
+ d:"Scatter cones, half upright and half flipped. One team rights them, one team flips them, everybody runs for two minutes. Count at the buzzer. Nobody ever sits.",
+ m:"20+ cones",h:"Put First Things First",e:"Cones"},
+
+// ---------- COURT GAMES ----------
+{c:"court",i:"i-gaga",n:"Gaga Ball",t:"20–30 min",g:"8–25",p:"5 min prep",
+ d:"Open-palm hits only, ball below the knee, out if it hits you at or under the knee. Out players sit on the rim and become referees. That job is what keeps the game honest.",
+ m:"Gaga Pit, gaga balls",h:"Be Proactive",e:"Gaga Pit,Gaga Balls"},
+{c:"court",i:"i-gaga",n:"Team Gaga",t:"20 min",g:"10–24",p:"5 min prep",
+ d:"Split into two teams inside the pit. You're out only when your whole team is out, so kids protect each other and the fast eliminations stop. Best fix for a pit where the same three kids always win.",
+ m:"Gaga Pit, gaga balls",h:"Synergize",e:"Gaga Pit,Gaga Balls"},
+{c:"court",i:"i-gaga",n:"Two-Ball Gaga",t:"15 min",g:"8–20",p:"5 min prep",
+ d:"Add a second gaga ball once the group knows the rules. Rounds end in half the time and heads come up — you can't track two balls staring at your feet.",
+ m:"Gaga Pit, 2 gaga balls",h:"Sharpen the Saw",e:"Gaga Pit,Gaga Balls"},
+{c:"court",i:"i-basketball",n:"Knockout",t:"15–20 min",g:"6–20",p:"No prep",
+ d:"Two balls, one line at the free-throw area. Make yours before the player behind you makes theirs or you're out. Run two lines at two hoops so waiting stays short.",
+ m:"Basketballs, Basketball Courts",h:"Put First Things First",e:"Basketballs,Basketball Courts"},
+{c:"court",i:"i-hoopnet",n:"Around the World",t:"15 min",g:"2–12",p:"No prep",
+ d:"Shoot from each marked spot around the key, moving on with each make. Let kids pick a 'safety' spot they can redo once — it keeps the beginners in the game.",
+ m:"Basketballs, Basketball Courts",h:"Begin with the End in Mind",e:"Basketballs,Basketball Courts"},
+{c:"court",i:"i-hoopnet",n:"H-O-R-S-E",t:"15 min",g:"2–8 per hoop",p:"No prep",
+ d:"Call your shot, make it, and the next player must match it. Ban dunk attempts and anything from beyond half court, or one kid runs the table.",
+ m:"Basketballs, Basketball Courts",h:"Begin with the End in Mind",e:"Basketballs,Basketball Courts"},
+{c:"court",i:"i-basketball",n:"Sideline Basketball",t:"20–25 min",g:"12–24",p:"5 min prep",
+ d:"Five play, everyone else stands on the sideline and may pass to their teammates but not shoot. Rotate the on-court five every two minutes. Everyone touches the ball, nobody sits.",
+ m:"Basketballs, Basketball Courts",h:"Think Win-Win",e:"Basketballs,Basketball Courts"},
+{c:"court",i:"i-basketball",n:"Dribble Tag",t:"12 min",g:"8–20",p:"No prep",
+ d:"Everyone dribbles inside the key area and tries to knock out other balls while keeping their own. Lose control, do five dribbles outside the line and come back in.",
+ m:"Basketballs, Basketball Courts",h:"Be Proactive",e:"Basketballs,Basketball Courts"},
+{c:"court",i:"i-paddle",n:"Ping Pong Round Robin",t:"20–30 min",g:"4–16 per table",p:"5 min prep",
+ d:"Play to five, winner stays, loser goes to the back. With two tables set up you can keep sixteen kids rotating with almost no downtime.",
+ m:"Ping Pong #1 and #2",h:"Sharpen the Saw",e:"Ping Pong"},
+{c:"court",i:"i-paddle",n:"Around the Table",t:"15 min",g:"6–16",p:"5 min prep",
+ d:"Everyone circles the ping pong table, hitting once and passing the paddle to the next player. Miss twice and you're out. The line moving is what makes it work with a big group.",
+ m:"Ping Pong #1 or #2",h:"Synergize",e:"Ping Pong"},
+{c:"court",i:"i-paddle",n:"Pickle Pong Doubles",t:"25 min",g:"4–16",p:"5 min prep",
+ d:"Doubles with a rotating partner each game so nobody gets stuck. Serve underhand, one bounce per side. Teach the serve first and the rest follows.",
+ m:"Pickle Pong",h:"Think Win-Win",e:"Pickle Pong"},
+{c:"court",i:"i-ball",n:"Four Square",t:"20 min",g:"4–16 per square",p:"5 min prep",
+ d:"Use the painted squares or draw with chalk. The king square calls one house rule per round. Rotate the king every three minutes so the rules don't calcify.",
+ m:"1 ball, chalk if needed",h:"Be Proactive",e:"Balls"},
+
+// ---------- TARGET & TOSS ----------
+{c:"target",i:"i-cornhole",n:"Cornhole Tournament",t:"25–30 min",g:"4–16",p:"5 min prep",
+ d:"Pairs, play to eleven, one board per bracket. Run both boards side by side and post the bracket where kids can see it — half the fun is checking the sheet.",
+ m:"Cornhole #1 and #2",h:"Think Win-Win",e:"Cornhole"},
+{c:"target",i:"i-cornhole",n:"Cornhole Golf",t:"25 min",g:"4–16",p:"5 min prep",
+ d:"Move the board to nine different spots and distances. Count throws until you sink one — lowest total wins. Kids who lose straight cornhole every time do fine at this.",
+ m:"Cornhole #1 or #2",h:"Begin with the End in Mind",e:"Cornhole"},
+{c:"target",i:"i-cornhole",n:"Cornhole Around the World",t:"20 min",g:"4–12",p:"5 min prep",
+ d:"Six marked distances, one bag each, work your way from closest to farthest. Miss and you go back one station. Chalk or cones mark the line.",
+ m:"Cornhole #1 or #2, chalk or cones",h:"Put First Things First",e:"Cornhole,Cones"},
+{c:"target",i:"i-pin",n:"Outdoor Bowling",t:"20–25 min",g:"6–18",p:"5 min prep",
+ d:"Set up on the pavement, not grass — pins won't stand and the ball won't roll true. Three lanes running at once keeps a whole group moving.",
+ m:"Bowling #1, #2, and #3",h:"Sharpen the Saw",e:"Bowling"},
+{c:"target",i:"i-pin",n:"Pin Points",t:"20 min",g:"6–18",p:"5 min prep",
+ d:"Number every pin one through ten. Your score is the sum of the pins you knock down, not the count. Sneaks in mental addition and the kids never notice.",
+ m:"Bowling set, marker or tape",h:"Put First Things First",e:"Bowling"},
+{c:"target",i:"i-pin",n:"Bowling Bingo",t:"20 min",g:"6–18",p:"5 min prep",
+ d:"Each player needs to knock down a specific named pin to advance. Requires actual aim instead of rolling hard down the middle, which is the whole point.",
+ m:"Bowling set, numbered pins",h:"Begin with the End in Mind",e:"Bowling"},
+{c:"target",i:"i-ringtoss",n:"Ring Toss Ladder",t:"15–20 min",g:"4–16",p:"5 min prep",
+ d:"Three distances marked with chalk, worth one, three, and five points. Ten rings each, call your distance before you throw. Calling it first is the strategy.",
+ m:"Ring Toss, chalk",h:"Begin with the End in Mind",e:"Ring Toss"},
+{c:"target",i:"i-ringtoss",n:"Ring Toss Relay",t:"15 min",g:"8–20",p:"5 min prep",
+ d:"Teams line up, run to the line, toss one ring, run back and tag. Team score is total rings landed in three minutes. Turns a quiet game into a loud one.",
+ m:"Ring Toss, cones",h:"Synergize",e:"Ring Toss,Cones"},
+{c:"target",i:"i-basket",n:"Jai Alai Catch",t:"15–20 min",g:"Pairs",p:"5 min prep",
+ d:"Partners with baskets, start close and step back after every clean catch. Count consecutive catches as a group and track the record on the whiteboard.",
+ m:"Jai Alai (Baskets)",h:"Sharpen the Saw",e:"Jai Alai (Baskets)"},
+{c:"target",i:"i-basket",n:"Jai Alai Distance Ladder",t:"15 min",g:"4–16",p:"5 min prep",
+ d:"Chalk lines every five feet. Pairs advance a line with each successful catch and drop back one on a miss. Nobody is eliminated, they just move on the ladder.",
+ m:"Jai Alai (Baskets), chalk",h:"Put First Things First",e:"Jai Alai (Baskets)"},
+{c:"target",i:"i-racket",n:"Velcro Target Rally",t:"15 min",g:"Pairs",p:"5 min prep",
+ d:"Throw and catch on the Velcro paddle, backing up one step per catch. The Velcro means beginners succeed immediately, which is why this works for K–1.",
+ m:"Tennis & Velcro Ball",h:"Sharpen the Saw",e:"Tennis & Velcro Ball"},
+{c:"target",i:"i-racket",n:"Velcro Team Score",t:"15 min",g:"8–20",p:"5 min prep",
+ d:"Two teams in lines facing each other, throw across and count total catches in three minutes as one group score. Cooperative, not competitive — the score is shared.",
+ m:"Tennis & Velcro Ball",h:"Think Win-Win",e:"Tennis & Velcro Ball"},
+{c:"target",i:"i-hoop",n:"Hula Hoop Targets",t:"15 min",g:"6–20",p:"5 min prep",
+ d:"Lay hoops flat at three distances and toss beanbags, balls, or cornhole bags into them. Innermost hoop is worth five. Easiest setup in this section.",
+ m:"Hula Hoops, beanbags or cornhole bags",h:"Begin with the End in Mind",e:"Hula Hoops,Cornhole"},
+
+// ---------- RELAYS & RACES ----------
+{c:"relay",i:"i-scooter",n:"Scooter Board Relay",t:"20 min",g:"8–24",p:"5 min prep",
+ d:"Sitting only, hands and feet, no standing or kneeling — that rule is not negotiable and you say it before anyone touches a board. Race to the cone and back, tag the next teammate.",
+ m:"Scooter Boards, cones",h:"Put First Things First",e:"Scooter Boards,Cones"},
+{c:"relay",i:"i-scooter",n:"Scooter Board Train",t:"15 min",g:"8–20",p:"5 min prep",
+ d:"Three or four kids in a line on boards, holding the shoulders of the person ahead. Only the front person may push. Slowest team that stays connected wins, not the fastest.",
+ m:"Scooter Boards",h:"Synergize",e:"Scooter Boards"},
+{c:"relay",i:"i-scooter",n:"Scooter Cargo Run",t:"20 min",g:"6–20",p:"5 min prep",
+ d:"One kid sits on the board, teammates tow with a hula hoop as the rope. Deliver a stack of cups to the far cone without dropping one. Slow and coordinated beats fast.",
+ m:"Scooter Boards, Hula Hoops, Speed Stacks",h:"Synergize",e:"Scooter Boards,Hula Hoops,Speed Stacks"},
+{c:"relay",i:"i-cone",n:"Obstacle Course Time Trial",t:"25 min",g:"8–30",p:"5 min prep",
+ d:"Set the course, walk the group through once slowly, then run it timed. Everyone gets two attempts and only their better time counts. The second run is where the improvement happens.",
+ m:"Obstacle Course, stopwatch",h:"Begin with the End in Mind",e:"Obstacle Course"},
+{c:"relay",i:"i-cone",n:"Build-Your-Own Course",t:"30 min",g:"3–5 per team",p:"5 min prep",
+ d:"Give each team a section of the field and a pile of gear. They design a leg of the course, then the whole group runs the combined thing. Designers explain their own section.",
+ m:"Obstacle Course, Hula Hoops, cones",h:"Be Proactive",e:"Obstacle Course,Hula Hoops,Cones"},
+{c:"relay",i:"i-cone",n:"Blind Obstacle Run",t:"20 min",g:"Pairs",p:"5 min prep",
+ d:"One partner closes their eyes, the other guides only with voice from the start line. No touching, no walking alongside. Swap and run it again — the second round is always faster.",
+ m:"Obstacle Course or cones",h:"Seek First to Understand",e:"Obstacle Course,Cones"},
+{c:"relay",i:"i-spoon",n:"Egg and Spoon Race",t:"15 min",g:"8–24",p:"5 min prep",
+ d:"Balance a ball on the spoon to the cone and back. Use a tennis ball outdoors, not a real egg. Drop it and you restart from the last cone, not the beginning.",
+ m:"Spoons, tennis balls, cones",h:"Put First Things First",e:"Spoons,Cones"},
+{c:"relay",i:"i-spoon",n:"Giant Spoon Relay",t:"15–20 min",g:"8–24",p:"5 min prep",
+ d:"Same idea, bigger everything — the Giant Spoons carry a playground ball. Two hands allowed. Wildly funnier to watch, and the older kids will actually play it.",
+ m:"Giant Spoons, balls, cones",h:"Synergize",e:"Giant Spoons,Balls,Cones"},
+{c:"relay",i:"i-spoon",n:"Spoon Pass Chain",t:"12 min",g:"8–20",p:"5 min prep",
+ d:"Team lines up and passes a ball down the line spoon to spoon, no hands. Drop it and it goes back to the start. Watch a group figure out that slower is faster.",
+ m:"Spoons or Giant Spoons, balls",h:"Synergize",e:"Spoons,Giant Spoons,Balls"},
+{c:"relay",i:"i-cups",n:"Speed Stack Relay",t:"20 min",g:"8–24",p:"5 min prep",
+ d:"Run to the table, complete a 3-6-3 stack and un-stack, run back and tag. Post the team record. Teach the 3-6-3 pattern once before you start the clock.",
+ m:"Speed Stacks #1 and #2, cones",h:"Sharpen the Saw",e:"Speed Stacks,Cones"},
+{c:"relay",i:"i-cups",n:"Speed Stack Head-to-Head",t:"15 min",g:"2–16",p:"5 min prep",
+ d:"Two players, two sets, same pattern, first clean stack wins. Bracket it out. A clean stack beats a fast messy one — call it strictly or the technique never develops.",
+ m:"Speed Stacks #1 and #2",h:"Begin with the End in Mind",e:"Speed Stacks"},
+{c:"relay",i:"i-jumbo",n:"Jumbo Stack Showdown",t:"20 min",g:"6–20",p:"5 min prep",
+ d:"Jumbo cups, full-body movement, two sets running at once. This is the one that draws a crowd — put it where the rest of the group can watch and cheer.",
+ m:"Jumbo Speed Stacks (both sets)",h:"Synergize",e:"Jumbo Speed Stacks"},
+{c:"relay",i:"i-hoop",n:"Hoop Roll Race",t:"12 min",g:"8–24",p:"5 min prep",
+ d:"Roll the hula hoop to the cone and back without it falling. Harder than it sounds and it rewards technique over speed, so it's a rare relay the fastest kid doesn't win.",
+ m:"Hula Hoops, cones",h:"Sharpen the Saw",e:"Hula Hoops,Cones"},
+{c:"relay",i:"i-hoop",n:"Hoop Hop Course",t:"15 min",g:"8–30",p:"5 min prep",
+ d:"Lay all four sets of hoops in a pattern — two feet, one foot, two feet. Race through, then let a student redesign the pattern for the next round.",
+ m:"Hula Hoops #1–#4",h:"Be Proactive",e:"Hula Hoops"},
+{c:"relay",i:"i-footprint",n:"Animal Walk Relay",t:"12 min",g:"8–30",p:"No prep",
+ d:"Bear crawl down, crab walk back, then frog hop, penguin waddle. Call a new animal every round so nobody can coast. Wears out a K–2 group faster than anything else here.",
+ m:"Nothing (cones help)",h:"Put First Things First",e:"No equipment"},
+
+// ---------- TEAM CHALLENGES ----------
+{c:"team",i:"i-hoop",n:"Hoop Pass",t:"15 min",g:"10–25",p:"5 min prep",
+ d:"Circle up holding hands and pass a hula hoop all the way around without letting go. Time it, then challenge them to halve their time. They always find a way.",
+ m:"Hula Hoops",h:"Synergize",e:"Hula Hoops"},
+{c:"team",i:"i-hoop",n:"All Aboard the Hoop",t:"15 min",g:"6–12 per hoop",p:"5 min prep",
+ d:"Whole team gets both feet inside the hoop. Then swap for a smaller hoop each round. Set a shoulder-height rule before the lifting starts, because it will start.",
+ m:"Hula Hoops #1–#4",h:"Synergize",e:"Hula Hoops"},
+{c:"team",i:"i-chain",n:"Human Chain Hoop Race",t:"15 min",g:"12–24",p:"5 min prep",
+ d:"Two teams, hands joined, hoop travels from one end of the line to the other and back. Nobody may unclasp. The team that talks the most usually wins, which is worth pointing out after.",
+ m:"Hula Hoops",h:"Seek First to Understand",e:"Hula Hoops"},
+{c:"team",i:"i-jumbo",n:"Team Pyramid Build",t:"20 min",g:"4–6 per team",p:"5 min prep",
+ d:"Build the tallest jumbo cup pyramid, but each teammate may only touch one cup at a time and no one may talk. Planning happens before the timer starts — give them 60 seconds for it.",
+ m:"Jumbo Speed Stacks",h:"Begin with the End in Mind",e:"Jumbo Speed Stacks"},
+{c:"team",i:"i-ball",n:"Bucket Brigade",t:"15 min",g:"10–30",p:"5 min prep",
+ d:"Move every ball from one hoop to another across the field, one ball per person per trip, in three minutes. Then ask them how to beat it and run it again.",
+ m:"Balls, Hula Hoops",h:"Synergize",e:"Balls,Hula Hoops"},
+{c:"team",i:"i-ball",n:"Silent Kickball",t:"25 min",g:"12–30",p:"5 min prep",
+ d:"Normal kickball, zero talking. Gestures and eye contact only. It falls apart at first and then something clicks around the third inning. Debrief it after.",
+ m:"Kickball, cones",h:"Seek First to Understand",e:"Kickball,Cones"},
+{c:"team",i:"i-cornhole",n:"Rotating Doubles",t:"25 min",g:"8–16",p:"5 min prep",
+ d:"Cornhole doubles where you switch partners every single game and carry your own score. By the end, everyone has played with everyone. Best mixer in the guide.",
+ m:"Cornhole #1 and #2",h:"Think Win-Win",e:"Cornhole"},
+{c:"team",i:"i-cups",n:"Blind Stack",t:"15 min",g:"Pairs",p:"5 min prep",
+ d:"One partner keeps their eyes closed and stacks. The other may only speak, never touch. Swap and go again. What they learn about giving instructions is the actual outcome.",
+ m:"Speed Stacks",h:"Seek First to Understand",e:"Speed Stacks"},
+{c:"team",i:"i-cone",n:"Minefield",t:"20 min",g:"Pairs",p:"5 min prep",
+ d:"Scatter cones across a rectangle. One partner crosses with eyes closed, guided only by their partner's voice from the sideline. Touch a cone, start over.",
+ m:"Cones",h:"Seek First to Understand",e:"Cones"},
+{c:"team",i:"i-stopwatch",n:"Beat Yesterday",t:"10 min",g:"Any size",p:"5 min prep",
+ d:"Pick one measurable thing — hoop passes, catches in a row, stack time — and post the group record on a board that stays up all session. They will ask to run it every day.",
+ m:"Whiteboard or clipboard, any equipment",h:"Begin with the End in Mind",e:"No equipment"},
+{c:"team",i:"i-arrows",n:"Everybody Wins Relay",t:"20 min",g:"12–30",p:"5 min prep",
+ d:"Mixed relay where each leg uses different gear — scooter, hoop, spoon, stack. Teams are scored on total finish time of the slowest member, so the fast kids start coaching.",
+ m:"Scooter Boards, Hula Hoops, Spoons, Speed Stacks",h:"Think Win-Win",e:"Scooter Boards,Hula Hoops,Spoons,Speed Stacks"},
+{c:"team",i:"i-clipboard",n:"Field Setup Crew",t:"10 min",g:"Any size",p:"No prep",
+ d:"Hand the group the equipment list and let them set up the entire game — boundaries, stations, everything — while you supervise only. Slower the first week, much faster by the third.",
+ m:"Whatever you reserved",h:"Be Proactive",e:"No equipment"},
+
+// ---------- COOL DOWN ----------
+{c:"cool",i:"i-water",n:"Water Break Walk-and-Talk",t:"10 min",g:"Any size",p:"No prep",
+ d:"Full water break, then a slow lap around the field in pairs with one question to discuss. Heart rates come down and you get a read on the group before you head in.",
+ m:"Water bottles",h:"Sharpen the Saw",e:"No equipment"},
+{c:"cool",i:"i-tree",n:"Shade Circle",t:"10 min",g:"8–25",p:"No prep",
+ d:"Sit in the shade and go around: one good thing, one thing you're looking forward to, one hard thing. Passing is allowed. Listen for the hard ones — that's where the useful information is.",
+ m:"Nothing",h:"Seek First to Understand",e:"No equipment"},
+{c:"cool",i:"i-cloud",n:"Cloud Watching",t:"8 min",g:"Any size",p:"No prep",
+ d:"Lie down on the grass and call out shapes. Genuinely regulating for a group that just ran for 40 minutes, and it costs nothing. Check the ground for ants first.",
+ m:"Nothing",h:"Sharpen the Saw",e:"No equipment"},
+{c:"cool",i:"i-ear",n:"Sound Hunt",t:"6 min",g:"Any size",p:"No prep",
+ d:"Two minutes of silence outdoors, counting every distinct sound. Compare lists after. Kids find birds, the AC units, traffic, a plane, their own breathing.",
+ m:"Nothing",h:"Seek First to Understand",e:"No equipment"},
+{c:"cool",i:"i-stretch",n:"Stretch Circle",t:"8 min",g:"Any size",p:"No prep",
+ d:"Eight stretches in the shade, slow count of five each, one kid leading each stretch. Calves and hamstrings first after a running day.",
+ m:"Nothing",h:"Sharpen the Saw",e:"No equipment"},
+{c:"cool",i:"i-footprint",n:"Slow-Motion Race",t:"8 min",g:"8–30",p:"No prep",
+ d:"Race across the field in genuine slow motion. Last one across wins, and stopping completely disqualifies you. Ridiculous, quiet, and it burns the last of the energy.",
+ m:"Nothing",h:"Put First Things First",e:"No equipment"},
+{c:"cool",i:"i-ball",n:"Sit-Down Ball Pass",t:"8 min",g:"8–25",p:"No prep",
+ d:"Seated circle, pass the ball and say something you did well today. Then reverse direction and name something a teammate did well. Slower pace is the point.",
+ m:"1 ball",h:"Think Win-Win",e:"Balls"},
+{c:"cool",i:"i-ringtoss",n:"Quiet Toss Corner",t:"15 min",g:"Any size",p:"5 min prep",
+ d:"Ring toss or cornhole set up in the shade with no scoring and no timer. For the kids who need to keep moving but shouldn't be running in the heat.",
+ m:"Ring Toss or Cornhole",h:"Sharpen the Saw",e:"Ring Toss,Cornhole"},
+{c:"cool",i:"i-heart",n:"Compliment Walk",t:"10 min",g:"Even number",p:"No prep",
+ d:"Walk one lap with an assigned partner, and each has to give the other one specific compliment about today. Specific is the rule — 'you're nice' gets a redo.",
+ m:"Nothing",h:"Think Win-Win",e:"No equipment"},
+{c:"cool",i:"i-bin",n:"Equipment Round-Up",t:"5–8 min",g:"Any size",p:"No prep",
+ d:"Time the group returning and counting every piece of gear. Post the record. It sounds like a chore and it becomes the most competitive thing you run all week.",
+ m:"Whatever you took out",h:"Put First Things First",e:"No equipment"},
+{c:"cool",i:"i-whistle",n:"Line-Up Countdown",t:"3 min",g:"Any size",p:"No prep",
+ d:"Same ritual every single day: one whistle, count to twenty, everyone in line with equipment down. Time it and beat it. Consistency is what makes the transition stop being a fight.",
+ m:"Nothing",h:"Put First Things First",e:"No equipment"},
+{c:"cool",i:"i-sun",n:"Shade Rotation Break",t:"10 min",g:"Any size",p:"No prep",
+ d:"Full stop, everyone under cover, water bottles out, no equipment in hands. Ten quiet minutes mid-block on a hot day prevents the meltdown that ends the whole session early.",
+ m:"Water bottles, shade",h:"Be Proactive",e:"No equipment"}
+];
+
+const grid = document.getElementById('grid');
+const empty = document.getElementById('empty');
+const countEl = document.getElementById('count');
+const chipBox = document.getElementById('catChips');
+const eqBox = document.getElementById('eqChips');
+const searchEl = document.getElementById('search');
+
+let activeCat = 'all';
+let activeEq = null;
+let noEqOnly = false;
+
+function makeChip(key,label,color,cls){
+  const b = document.createElement('button');
+  b.className = 'chip' + (cls ? ' '+cls : '');
+  b.setAttribute('aria-pressed','false');
+  b.dataset.key = key;
+  b.innerHTML = color ? '<span class="dot" style="background:'+color+'"></span>'+label : label;
+  return b;
+}
+
+const allChip = makeChip('all','All 76',null);
+allChip.setAttribute('aria-pressed','true');
+chipBox.appendChild(allChip);
+Object.entries(CATS).forEach(([k,v])=>chipBox.appendChild(makeChip(k,v.label,v.color)));
+[...chipBox.children].forEach(c=>c.addEventListener('click',()=>{
+  const k = c.dataset.key;
+  activeCat = (activeCat===k && k!=='all') ? 'all' : k;
+  [...chipBox.children].forEach(x=>x.setAttribute('aria-pressed', x.dataset.key===activeCat));
+  render();
+}));
+
+EQUIP.forEach(name=>{
+  const b = makeChip(name,name,null,'eq');
+  b.addEventListener('click',()=>{
+    activeEq = (activeEq===name) ? null : name;
+    [...eqBox.children].forEach(x=>x.setAttribute('aria-pressed', x.dataset.key===activeEq));
+    render();
+  });
+  eqBox.appendChild(b);
+});
+
+function cardHTML(a){
+  const cat = CATS[a.c];
+  const prepClass = a.p==='No prep' ? ' class="prep-none"' : '';
+  return '<article class="card">'
+    + '<div class="card-top">'
+      + '<div class="icon" style="background:'+cat.color+'"><svg viewBox="0 0 48 48"><use href="#'+a.i+'"/></svg></div>'
+      + '<div><span class="cat" style="color:'+cat.color+'">'+cat.label+'</span><h3>'+a.n+'</h3></div>'
+    + '</div>'
+    + '<div class="meta"><span>'+a.t+'</span><span>'+a.g+'</span><span'+prepClass+'>'+a.p+'</span></div>'
+    + '<p class="desc">'+a.d+'</p>'
+    + '<div class="mats"><b>You need</b>'+a.m+'</div>'
+    + '<span class="habit"><svg viewBox="0 0 48 48"><use href="#i-star"/></svg>'+a.h+'</span>'
+    + '</article>';
+}
+
+function render(){
+  const q = searchEl.value.trim().toLowerCase();
+  const list = A.filter(a=>{
+    if(activeCat!=='all' && a.c!==activeCat) return false;
+    if(activeEq && !a.e.split(',').includes(activeEq)) return false;
+    if(noEqOnly && a.e!=='No equipment') return false;
+    if(!q) return true;
+    return (a.n+' '+a.d+' '+a.m+' '+a.h+' '+a.e+' '+CATS[a.c].label).toLowerCase().includes(q);
+  });
+  grid.innerHTML = list.map(cardHTML).join('');
+  empty.hidden = list.length>0;
+  countEl.textContent = list.length + (list.length===1?' activity':' activities');
+}
+
+document.getElementById('pickBtn').addEventListener('click',()=>{
+  const cards = [...grid.querySelectorAll('.card')];
+  if(!cards.length) return;
+  cards.forEach(c=>c.classList.remove('flash'));
+  const pick = cards[Math.floor(Math.random()*cards.length)];
+  pick.classList.add('flash');
+  pick.scrollIntoView({block:'center', behavior:'smooth'});
+});
+
+document.getElementById('noPrepBtn').addEventListener('click',(e)=>{
+  noEqOnly = !noEqOnly;
+  e.target.textContent = noEqOnly ? 'Show all activities' : 'Show no-equipment only';
+  render();
+});
+
+searchEl.addEventListener('input',render);
+render();
+</script>
+</body>
+</html>
